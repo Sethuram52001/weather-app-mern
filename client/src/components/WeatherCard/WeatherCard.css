@@ -1,0 +1,28 @@
+.general-weather-card {
+    border-radius: 5px;
+    width: 300px;
+    background-color: coral;
+    margin-top: 10px;
+}
+
+.weather-card {
+    border-radius: 5px;
+    width: 500px;
+    margin: 0 auto;
+    background-color: coral;
+}
+
+.box {
+    /*background-color: coral;*/
+    width: 30%;
+    display:inline-block;
+    margin:10px 0;
+    border-radius:5px;
+}
+
+.text {
+    padding: 10px 0;
+    color:white;
+    font-weight:bold;
+    text-align:center;
+}

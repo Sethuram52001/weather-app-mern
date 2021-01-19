@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import "./WeatherCard.css";
 
 const WeatherCard = ({ weatherInfo }) => {
 
@@ -21,14 +22,24 @@ const WeatherCard = ({ weatherInfo }) => {
   
     return ( 
         <div>
-        <p>weather info: {city}</p>
-        <p>highest temp: {highestTemp}</p>
-        <p>lowest temp: {lowestTemp}</p>
-        <p>hightest temp: {highestTemp}</p>
-        <p>wind: {wind}</p>
-        <p>humidity: {humidity}</p>
-        <p>sunrise: {sunrise}</p>
-        <p>sunset: {sunset}</p>
+          <div className="general-weather-card">
+            <div className="text">weather info: {city}</div>
+            <div className="text">temp: {temp}</div>
+          </div>
+          <div className="weather-card">
+            <div className="box">
+              <div className="text">lowest temp: {lowestTemp}</div>
+              <div className="text">hightest temp: {highestTemp}</div>
+            </div>
+            <div className="box">
+              <div className="text">wind: {wind}</div>
+              <div className="text">humidity: {humidity}</div>
+            </div>
+            <div className="box">
+              <div className="text">sunrise: {sunrise}</div>
+              <div className="text">sunset: {sunset}</div>
+            </div>
+          </div>
         </div>
      );
 }
