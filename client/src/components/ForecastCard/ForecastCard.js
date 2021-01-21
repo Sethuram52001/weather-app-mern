@@ -1,31 +1,21 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
-const ForecastCard = (key, temp, month, day, hour) => {
+const ForecastCard = ({item}) => {
+  console.log(item);
     return ( 
         <div className="card">
             <h3 className="card-title">Forecast Card</h3>
-            <p className="card-text">month: </p>
+            <p className="card-text">day: {item.dt_txt.slice(8, 10)}</p>
+            <p className="card-text">month: {item.dt_txt.slice(5, 7)}</p>
+            <p className="card-text">hour: {item.dt_txt.slice(11, 13) * 1}</p>
+            <p className="card-text">temp: {item.main.temp}</p>
         </div>
      );
 }
+
+ForecastCard.propTypes = {
+  item: PropTypes.object
+}
  
 export default ForecastCard;
-
-/*
-<div class="container">
-  <div class="card-columns d-flex justify-content-center">
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-      </div>
-    </div>
-    <div class="card">
-      <div class="card-block">
-        <h4 class="card-title">Card title</h4>
-        <p class="card-text">This is a longer card with shorter text.</p>
-      </div>
-    </div>
-  </div>
-</div>
-*/

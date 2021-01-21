@@ -11,10 +11,7 @@ const Forecast = ({ forecastInfo }) => {
         {forecastInfo.map(item => (
           <ForecastCard
             key={item.dt}
-            temp={Math.floor(item.main.temp * 1) / 1}
-            month={item.dt_txt.slice(5, 7)}
-            day={item.dt_txt.slice(8, 10)}
-            hour={item.dt_txt.slice(11,13)*1}
+            item={item}
           />
         ))}
       </div>

@@ -2,12 +2,23 @@ import React, { Component } from 'react';
 import config from "../../config/config.json";
 import Forecast from '../Forecast/Forecast';
 import WeatherCard from '../WeatherCard/WeatherCard';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faCloud,
+  faBolt,
+  faCloudRain,
+  faCloudShowersHeavy,
+  faSnowflake,
+  faSun,
+  faSmog,
+} from '@fortawesome/free-solid-svg-icons';
 
 class Home extends Component {
     state = {
         searchValue: "",
         weatherInfo: null,
-        forecast: null
+        forecast: null,
+        icon: null
     }
     
     getWeather = async (e) => {
@@ -40,7 +51,24 @@ class Home extends Component {
             wind: data.wind.speed,
             forcast: data2.list
         }
-        this.setState({ weatherInfo, forecastInfo: data2.list });
+        let main = data.weather[0].main, icon = null;
+        // selecting weather icon
+        if (main === 'Thunderstorm') {
+            icon = faBolt;
+        } else if (main === 'Drizzle') {
+            icon = faCloudRain;
+        } else if (main === 'Rain') {
+            icon = faCloudShowersHeavy;
+        } else if (main === 'Snow') {
+            icon = faSnowflake;
+        } else if (main === 'Clear') {
+            icon = faSun;
+        } else if (main === 'Clouds') {
+            icon = faCloud;
+        } else {
+            icon = faSmog;
+        }
+        this.setState({ weatherInfo, forecastInfo: data2.list, icon });
     }
 
     handleChange = (e) => {
@@ -48,7 +76,7 @@ class Home extends Component {
     }
 
     render() {
-        const { weatherInfo, forecastInfo } = this.state;
+        const { weatherInfo, forecastInfo, icon } = this.state;
 
         return ( 
             <div>
@@ -56,6 +84,7 @@ class Home extends Component {
                 <form onSubmit={this.getWeather}>   
                     <input type="search" onChange={this.handleChange} value={this.state.searchValue} placeholder="City..."></input>
                 </form>
+                {icon ? <FontAwesomeIcon icon={icon} /> : ""}
                 {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}
                 {forecastInfo && <Forecast forecastInfo={forecastInfo} />}
             </div>
@@ -64,3 +93,6 @@ class Home extends Component {
 }
  
 export default Home;
+
+// info
+// possible weather-condition reported from by openweathermap api : https://openweathermap.org/weather-conditions
