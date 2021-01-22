@@ -12,13 +12,16 @@ import {
   faSun,
   faSmog,
 } from '@fortawesome/free-solid-svg-icons';
+import Chart from '../Chart/Chart';
+import Error from "../Error/Error";
 
 class Home extends Component {
     state = {
         searchValue: "",
         weatherInfo: null,
         forecast: null,
-        icon: null
+        icon: null,
+        error: false
     }
     
     getWeather = async (e) => {
@@ -68,7 +71,7 @@ class Home extends Component {
         } else {
             icon = faSmog;
         }
-        this.setState({ weatherInfo, forecastInfo: data2.list, icon });
+        this.setState({ weatherInfo, forecastInfo: data2.list, icon, error: false });
     }
 
     handleChange = (e) => {
@@ -76,7 +79,7 @@ class Home extends Component {
     }
 
     render() {
-        const { weatherInfo, forecastInfo, icon } = this.state;
+        const { weatherInfo, forecastInfo, icon, error } = this.state;
 
         return ( 
             <div>
@@ -87,6 +90,8 @@ class Home extends Component {
                 {icon ? <FontAwesomeIcon icon={icon} /> : ""}
                 {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}
                 {forecastInfo && <Forecast forecastInfo={forecastInfo} />}
+                {forecastInfo && <Chart forecastInfo={forecastInfo} />}
+                {error && <Error />}
             </div>
          );
     }
