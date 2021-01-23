@@ -21,7 +21,8 @@ class Home extends Component {
         weatherInfo: null,
         forecast: null,
         icon: null,
-        error: false
+        error: false,
+        toggle: false
     }
     
     getWeather = async (e) => {
@@ -78,8 +79,12 @@ class Home extends Component {
         this.setState({ searchValue: e.target.value });
     }
 
+    handleToggle = () => {
+        this.setState({ toggle: !this.state.toggle });
+    }
+
     render() {
-        const { weatherInfo, forecastInfo, icon, error } = this.state;
+        const { weatherInfo, forecastInfo, icon, error, toggle } = this.state;
 
         return ( 
             <div>
@@ -89,8 +94,9 @@ class Home extends Component {
                 </form>
                 {icon ? <FontAwesomeIcon icon={icon} /> : ""}
                 {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}
-                {forecastInfo && <Forecast forecastInfo={forecastInfo} />}
-                {forecastInfo && <Chart forecastInfo={forecastInfo} />}
+                <button onClick={this.handleToggle}>toggle</button>
+                {(forecastInfo && !toggle) && <Forecast forecastInfo={forecastInfo} />}
+                {(forecastInfo && toggle) && <Chart forecastInfo={forecastInfo} />}
                 {error && <Error />}
             </div>
          );
