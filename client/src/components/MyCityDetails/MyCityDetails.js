@@ -10,7 +10,7 @@ const MyCityDetails = (props) => {
     const [forecastInfo, setforecastInfo] = useState(null);
     const [toggle, handleToggle] = useState(null);
 
-    useEffect(async() => {
+    useEffect(async () => {
         const API_KEY = config.API_KEY;
         const searchValue = props.match.params.id;
         const weather = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&APPID=${API_KEY}&units=metric`;
@@ -39,7 +39,7 @@ const MyCityDetails = (props) => {
         }
         setWeatherInfo(weatherInfo);
         setforecastInfo(data2.list);
-    })
+    }, []);
 
     const city = props.match.params.id;
     console.log("my city details of: "+city)
