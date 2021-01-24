@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from "react-router-dom";
 
 class MyCities extends Component {
     state = { 
@@ -9,7 +10,7 @@ class MyCities extends Component {
         const { cities } = this.state;
         const listItems = cities.map((city) =>
             <li key={city.toString()}>
-                {city}
+                <Link to={`/my_city_details/${city}`}>{city}</Link>
             </li>
         );
 
