@@ -1,9 +1,29 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 class MyCities extends Component {
     state = { 
         cities: ["Madurai","Chennai","Delhi"]
+    }
+
+    componentDidMount() {
+        axios.get(`http://localhost:5000/cities`)
+            .then(res => {
+                // let cities = res.map((value) => {
+                //     value.cityname
+                // })
+                console.log(res.data)
+                const resObj = res.data;
+                const cities = [];
+                resObj.map((value) => {
+                    console.log(value.cityname)
+                    cities.push(value.cityname)
+                });
+                console.log(cities);
+                this.setState({ cities });
+            })
+            .catch(err => console.log(err));
     }
     
     render() { 
