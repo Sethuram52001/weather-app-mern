@@ -33,6 +33,11 @@ const AppNavbar = (props) => {
                     <Link to="/my_cities">My Cities</Link>
                 </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink>
+                    <Link to="/add_city">Add City</Link>
+                </NavLink>
+            </NavItem>
           </Nav>
           <NavbarText>Login</NavbarText>
         </Collapse>
