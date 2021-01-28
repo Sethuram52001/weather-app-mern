@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import "./WeatherCard.css";
+import "./WeatherCard.scss";
 
 const WeatherCard = ({ weatherInfo }) => {
 

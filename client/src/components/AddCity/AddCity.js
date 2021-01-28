@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
+import Searchbar from '../Searchbar/Searchbar';
 
 class AddCity extends Component {
     state = {
@@ -12,8 +13,8 @@ class AddCity extends Component {
 
     handleSubmit = (e) => {
         e.preventDefault();
-        // const city = this.state.searchValue;
-        // this.setState({ city });
+        //const city = this.state.searchValue;
+        this.setState({ city });
         const city = {
             cityname: this.state.searchValue
         }
