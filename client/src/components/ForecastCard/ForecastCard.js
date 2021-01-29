@@ -1,14 +1,20 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import "./ForecastCard.scss";
 
-const ForecastCard = ({item}) => {
+const ForecastCard = ({ item }) => {
+  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+  const day = item.dt_txt.slice(8, 10);
+  const month = item.dt_txt.slice(5, 7);
+  const hour = item.dt_txt.slice(11, 13) * 1;
+  const temp = item.main.temp;
+  const month_name = months[month-1];
+
     return ( 
         <div className="card">
-            <h3 className="card-title">Forecast Card</h3>
-            <p className="card-text">day: {item.dt_txt.slice(8, 10)}</p>
-            <p className="card-text">month: {item.dt_txt.slice(5, 7)}</p>
-            <p className="card-text">hour: {item.dt_txt.slice(11, 13) * 1}</p>
-            <p className="card-text">temp: {item.main.temp}</p>
+            <div className="card-text">{`${month_name} ${day}`}</div>
+            <div className="card-text">{`${hour}:00`}</div>
+            <div className="card-text">{`${temp} \u00b0C`}</div>
         </div>
      );
 }

@@ -1,15 +1,17 @@
 import React from 'react';
 import PropTypes from "prop-types";
 import ForecastCard from '../ForecastCard/ForecastCard';
+import "./Forecast.scss";
 
 const Forecast = ({ forecastInfo }) => {
 
   return ( 
     <div>
       <h3>Forecast</h3>
-      <div className="container">{/*card-columns d-flex justify-content-center*/}
+      <div className="scrolling-wrapper">{/*card-columns d-flex justify-content-center*/}
         {forecastInfo.map(item => (
           <ForecastCard
+            className="card"
             key={item.dt}
             item={item}
           />
