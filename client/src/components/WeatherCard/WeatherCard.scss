@@ -21,15 +21,25 @@ $desktop: 1200px;
     background-color: coral;
     display: inline-block;
     box-sizing: border-box;
+    padding: 15px;
     @media only screen and (max-width: $tablet) {
         display: block;
         width: 350px;
+        margin: 0 auto;
+    }
+    
+    @media only screen and (max-width: $laptop) {
+
     }
 }
 
 .box {
     width: 30%;
     display: inline-block;
+}
+
+.text {
+    display: block;
 }
 
 // .general-weather-card {

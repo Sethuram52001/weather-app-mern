@@ -28,16 +28,22 @@ const WeatherCard = ({ weatherInfo }) => {
           </div>
           <div className="weather-card">
             <div className="box">
-              <div className="text">lowest temp: {lowestTemp}</div>
-              <div className="text">hightest temp: {highestTemp}</div>
+              <div className="text">{lowestTemp}&deg;C</div>
+              <div className="text">low</div>
+              <div className="text">{highestTemp}&deg;C</div>
+              <div className="text">high</div>
             </div>
             <div className="box">
-              <div className="text">wind: {wind}</div>
-              <div className="text">humidity: {humidity}</div>
+              <div className="text">{wind}</div>
+              <div className="text">wind</div>
+              <div className="text">{humidity}%</div>
+              <div className="text">humidity</div>
             </div>
             <div className="box">
-              <div className="text">sunrise: {sunrise}</div>
-              <div className="text">sunset: {sunset}</div>
+              <div className="text">{sunrise} AM</div>
+              <div className="text">sunrise</div>
+              <div className="text">{sunset} PM</div>
+              <div className="text">sunset</div>
             </div>
           </div>
         </div>
