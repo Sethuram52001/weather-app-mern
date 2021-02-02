@@ -14,7 +14,7 @@ class AddCity extends Component {
     handleSubmit = (e) => {
         e.preventDefault();
         //const city = this.state.searchValue;
-        this.setState({ city });
+        //this.setState({ city });
         const city = {
             cityname: this.state.searchValue
         }

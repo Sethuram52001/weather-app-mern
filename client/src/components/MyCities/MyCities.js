@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
 import axios from "axios";
+import MyCityCard from "../MyCityCard/MyCityCard";
 
 class MyCities extends Component {
     state = { 
-        cities: ["Madurai","Chennai","Delhi"]
+        cities: []
     }
 
     componentDidMount() {
@@ -30,7 +31,8 @@ class MyCities extends Component {
         const { cities } = this.state;
         const listItems = cities.map((city) =>
             <li key={city.toString()}>
-                <Link to={`/my_city_details/${city}`}>{city}</Link>
+                <MyCityCard name={city.toString()} />
+                {/* <Link to={`/my_city_details/${city}`}>{city}</Link> */}
             </li>
         );
 
