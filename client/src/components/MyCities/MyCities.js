@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
 import axios from "axios";
 import MyCityCard from "../MyCityCard/MyCityCard";
+import "./MyCities.scss";
 
 class MyCities extends Component {
     state = { 
@@ -11,9 +11,6 @@ class MyCities extends Component {
     componentDidMount() {
         axios.get(`http://localhost:5000/cities`)
             .then(res => {
-                // let cities = res.map((value) => {
-                //     value.cityname
-                // })
                 console.log(res.data)
                 const resObj = res.data;
                 const cities = [];
@@ -30,16 +27,13 @@ class MyCities extends Component {
     render() { 
         const { cities } = this.state;
         const listItems = cities.map((city) =>
-            <li key={city.toString()}>
-                <MyCityCard name={city.toString()} />
-                {/* <Link to={`/my_city_details/${city}`}>{city}</Link> */}
-            </li>
+            <MyCityCard name={city.toString()} className="my-city-card" />
         );
 
         return ( 
             <div>
                 <h1>My Cities</h1>
-                <ul>{listItems}</ul>
+                {listItems}
             </div>
          );
     }
