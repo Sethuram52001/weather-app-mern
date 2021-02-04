@@ -15,19 +15,33 @@ class MyCities extends Component {
                 const resObj = res.data;
                 const cities = [];
                 resObj.map((value) => {
-                    console.log(value.cityname)
-                    cities.push(value.cityname)
+                    const city = {
+                        cityname: value.cityname,
+                        id: value._id
+                    };
+                    cities.push(city)
                 });
                 console.log(cities);
                 this.setState({ cities });
             })
             .catch(err => console.log(err));
     }
+
+    deleteCard = (id) => {
+        console.log("delete from mycities");
+        console.log(id);
+        const { cities } = this.state;
+        const newCities = cities.filter(city => 
+            city.id !== id
+        );
+        this.setState({ cities: newCities });
+        axios.delete(`http://localhost:5000/cities/${id}`);
+    }
     
     render() { 
         const { cities } = this.state;
         const listItems = cities.map((city) =>
-            <MyCityCard name={city.toString()} className="my-city-card" />
+            <MyCityCard id={city.id} city={city} handleDelete={this.deleteCard} className="my-city-card" />
         );
 
         return ( 
