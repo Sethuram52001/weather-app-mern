@@ -3,6 +3,11 @@ import PropTypes from "prop-types";
 import config from "../../config/config.json";
 import { Link } from "react-router-dom";
 import "./MyCityCard.scss";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+    faCaretDown,
+    faCaretUp
+} from '@fortawesome/free-solid-svg-icons';
 
 const MyCityCard = ({ city, handleDelete }) => {
     const [temp, setTemp] = useState(0);
@@ -29,15 +34,22 @@ const MyCityCard = ({ city, handleDelete }) => {
 
     return ( 
         <div className="my-city-card">
-            <p>{city.cityname}</p>
+            <div className="card-title">{city.cityname}</div>
             {/* <FontAwesomeIcon icon={icon} /> */}
-            <img src={iconUrl}></img>
-            <p>{temp}</p>
-            <p>{desc}</p>
-            <p>{minTemp} Min</p>
-            <p>{maxTemp} Max</p>
-            <p>{desc}</p>
-            <p><Link to={`/my_city_details/${city.cityname}`}>View</Link></p>
+            <img src={iconUrl} className="weather-img"></img>
+            <div>{temp}</div>
+            <div>{desc}</div>
+            <div className="min-temp">
+                <FontAwesomeIcon className="caret-down" icon={faCaretDown}></FontAwesomeIcon>
+                <div>{minTemp}</div>
+                <div>Min</div>
+            </div>
+            <div className="max-temp">
+                <FontAwesomeIcon className="caret-up" icon={faCaretUp}></FontAwesomeIcon>
+                <div>{maxTemp}</div>
+                <div>Max</div>
+            </div>
+            <div><Link to={`/my_city_details/${city.cityname}`}>View</Link></div>
             <button onClick={() => handleDelete(city.id)}>del</button>
         </div>
     );
@@ -55,4 +67,9 @@ MyCityCard.propTypes = {
 
 /*
 open weather icons: http://openweathermap.org/img/wn/10d@2x.png
+*/
+
+/*
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
+<div>Icons made by <a href="https://www.freepik.com" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
 */

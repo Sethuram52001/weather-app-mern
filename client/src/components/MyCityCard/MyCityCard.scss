@@ -1,4 +1,5 @@
 .my-city-card {
+    background-color: white;
     background-color: coral;
     height: 600px;
     width: 340px;
@@ -6,4 +7,30 @@
     box-sizing: border-box;
     border-radius: 25px;
     text-align: center;
+}
+
+.min-temp {
+    display: inline-block;
+    margin: 5px;
+}
+
+.max-temp {
+    display: inline-block;
+    margin: 5px;
+}
+
+.caret-down {
+    color: red;
+}
+
+.caret-up {
+    color: green;
+}
+
+.card-title {
+    font-size: 30px;
+}
+
+.weather-img {
+    width: 200px;
 }
