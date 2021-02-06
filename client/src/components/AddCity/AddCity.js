@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import Searchbar from '../Searchbar/Searchbar';
+import SearchBar from "material-ui-search-bar";
 
 class AddCity extends Component {
     state = {
@@ -29,6 +29,7 @@ class AddCity extends Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <input type="search" onChange={this.handleChange} value={this.state.inputValue}></input>
+                <SearchBar />
             </form>
         );
     }

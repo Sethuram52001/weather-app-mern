@@ -1,6 +1,6 @@
 .my-city-card {
     background-color: white;
-    background-color: coral;
+    outline: solid black;
     height: 600px;
     width: 340px;
     margin: 1px;
@@ -9,14 +9,18 @@
     text-align: center;
 }
 
-.min-temp {
+.min-temp-block {
     display: inline-block;
-    margin: 5px;
+    width: 8rem;
+    margin-top: 5px;
+    margin-left: 5px;
 }
 
-.max-temp {
+.max-temp-block {
     display: inline-block;
-    margin: 5px;
+    width: 8rem;
+    margin-top: 5px;
+    margin-right: 1px;
 }
 
 .caret-down {
@@ -24,7 +28,7 @@
 }
 
 .caret-up {
-    color: green;
+    color: #00e6b4;
 }
 
 .card-title {
@@ -33,4 +37,29 @@
 
 .weather-img {
     width: 200px;
+}
+
+.temp {
+    font-size: 3rem;
+}
+
+.desc {
+    font-size: 1.5rem;
+}
+
+.min-temp {
+    font-size: 2rem;
+}
+
+.max-temp {
+    font-size: 2rem;
+}
+
+.min-temp-text {
+    color: red;
+    font-size: 1rem;
+}
+
+.max-temp-text {
+    color: #00e6b4;
 }

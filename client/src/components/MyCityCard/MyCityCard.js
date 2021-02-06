@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import config from "../../config/config.json";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "./MyCityCard.scss";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -15,6 +15,7 @@ const MyCityCard = ({ city, handleDelete }) => {
     const [maxTemp, setMaxTemp] = useState(0);
     const [desc, setDesc] = useState("");
     const [icon, setIcon] = useState("");
+    const history = useHistory();
 
     useEffect( async() => {
         const API_KEY = config.API_KEY;
@@ -33,21 +34,21 @@ const MyCityCard = ({ city, handleDelete }) => {
     // icon, temp, high temp, low temp, desc
 
     return ( 
-        <div className="my-city-card">
+        <div onClick={() => {history.push(`/my_city_details/${city.cityname}`)}} className="my-city-card">
             <div className="card-title">{city.cityname}</div>
             {/* <FontAwesomeIcon icon={icon} /> */}
             <img src={iconUrl} className="weather-img"></img>
-            <div>{temp}</div>
-            <div>{desc}</div>
-            <div className="min-temp">
-                <FontAwesomeIcon className="caret-down" icon={faCaretDown}></FontAwesomeIcon>
-                <div>{minTemp}</div>
-                <div>Min</div>
+            <div className="temp">{temp}&deg;</div>
+            <div className="desc">{desc}</div>
+            <div className="min-temp-block">
+                <FontAwesomeIcon className="caret-down" icon={faCaretDown} size="2x"></FontAwesomeIcon>
+                <div className="min-temp">{Math.round(minTemp)}&deg;</div>
+                <div className="min-temp-text">Min</div>
             </div>
-            <div className="max-temp">
-                <FontAwesomeIcon className="caret-up" icon={faCaretUp}></FontAwesomeIcon>
-                <div>{maxTemp}</div>
-                <div>Max</div>
+            <div className="max-temp-block">
+                <FontAwesomeIcon className="caret-up" icon={faCaretUp} size="2x"></FontAwesomeIcon>
+                <div className="max-temp">{Math.round(maxTemp)}&deg;</div>
+                <div className="max-temp-text">Max</div>
             </div>
             <div><Link to={`/my_city_details/${city.cityname}`}>View</Link></div>
             <button onClick={() => handleDelete(city.id)}>del</button>
