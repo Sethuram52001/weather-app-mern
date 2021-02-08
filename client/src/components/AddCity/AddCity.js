@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from "axios";
 import SearchBar from "material-ui-search-bar";
+import Searchbar from '../Searchbar/Searchbar';
 
 class AddCity extends Component {
     state = {
@@ -16,21 +17,19 @@ class AddCity extends Component {
         //const city = this.state.searchValue;
         //this.setState({ city });
         const city = {
-            cityname: this.state.searchValue
+            cityname: e.target.elements.city.value
         }
         console.log(city);
-    // axios.post('http://localhost:5000/users/add', user)
-    //   .then(res => console.log(res.data));
         axios.post('http://localhost:5000/cities/add', city)
-            .then(res => console.log(res.data))
+          .then(res => console.log(res.data))
     }
 
     render() { 
         return (
-            <form onSubmit={this.handleSubmit}>
-                <input type="search" onChange={this.handleChange} value={this.state.inputValue}></input>
-                <SearchBar />
-            </form>
+            // <form onSubmit={this.handleSubmit}>
+            //     <input type="search" onChange={this.handleChange} value={this.state.inputValue}></input>
+            // </form>
+            <Searchbar handleSubmit={this.handleSubmit} />
         );
     }
 }

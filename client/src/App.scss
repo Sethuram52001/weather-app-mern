@@ -1,4 +1,19 @@
-.App {
+.root {
+  background: #ff6e7f;  
+  background: -webkit-linear-gradient(to right, #bfe9ff, #ff6e7f);  
+  background: linear-gradient(to right, #bfe9ff, #ff6e7f);
+}
+/*
+  background: #ad5389;  
+  background: -webkit-linear-gradient(to right, #3c1053, #ad5389);  
+  background: linear-gradient(to right, #3c1053, #ad5389);
+
+  background: #ff6e7f;  
+  background: -webkit-linear-gradient(to right, #bfe9ff, #ff6e7f);  
+  background: linear-gradient(to right, #bfe9ff, #ff6e7f);
+
+*/
+/*.App {
   text-align: center;
 }
 
@@ -36,3 +51,4 @@
     transform: rotate(360deg);
   }
 }
+*/

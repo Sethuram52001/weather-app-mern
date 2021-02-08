@@ -91,7 +91,7 @@ class Home extends Component {
         return (
             <div>
                 <h1>Home</h1>
-                <Searchbar handleGetWeather={this.getWeather} />
+                <Searchbar handleSubmit={this.getWeather} />
                 {/* <form onSubmit={this.getWeather}>
                     <input type="search" onChange={this.handleChange} value={this.state.searchValue} placeholder="City..."></input>
                 </form> */}

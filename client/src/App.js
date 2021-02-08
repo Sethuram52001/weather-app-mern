@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import "./App.scss";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Home from './components/Home/Home';
@@ -8,9 +9,15 @@ import AppNavbar from './components/AppNavbar/AppNavbar';
 import AddCity from './components/AddCity/AddCity';
 
 class App extends Component {
-  state = {  }
+  state = {}
+  
+  componentDidMount() {
+    document.body.classList.add("root");
+  }
+
   render() { 
     return ( 
+      <div>
       <Router>
         <AppNavbar />
         <Switch>
@@ -20,7 +27,8 @@ class App extends Component {
           <Route path="/add_city" component={AddCity}></Route>
         </Switch>
       </Router>
-     );
+      </div>
+    );
   }
 }
  

@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
+import SearchBar from "material-ui-search-bar";
 
 const Searchbar = (props) => {
-    return ( 
-        <div>
-            <form onSubmit={props.handleGetWeather}>
-                <input type="search" name="city" placeholder="City..."></input>
-            </form>
-        </div>
-     );
+    return (
+        <form onSubmit={ props.handleSubmit }>
+            <SearchBar
+                name="city"
+            />
+        </form>
+    );
 }
  
 export default Searchbar;

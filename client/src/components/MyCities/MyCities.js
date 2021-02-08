@@ -46,7 +46,6 @@ class MyCities extends Component {
 
         return ( 
             <div>
-                <h1>My Cities</h1>
                 {listItems}
             </div>
          );
