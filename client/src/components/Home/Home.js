@@ -3,7 +3,7 @@ import "./Home.scss";
 import config from "../../config/config.json";
 import Forecast from '../Forecast/Forecast';
 import WeatherCard from '../WeatherCard/WeatherCard';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import GeneralWeatherCard from "../GeneralWeatherCard/GeneralWeatherCard";
 import {
   faCloud,
   faBolt,
@@ -24,7 +24,8 @@ class Home extends Component {
         forecast: null,
         icon: null,
         error: false,
-        toggle: false
+        toggle: false,
+        date: null
     }
 
     getWeather = async (e) => {
@@ -38,9 +39,28 @@ class Home extends Component {
         const data = await api_call.json();
         const api_call2 = await fetch(forecast);
         const data2 = await api_call2.json();
-        const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
-        const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5);
-        const date = (new Date()).toString();
+        const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString().slice(0, 4);
+        const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString().slice(0, 4);
+                const months = [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'Nocvember',
+          'December',
+        ];
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const currentDate = new Date();
+        const date = `${days[currentDate.getDay()]} ${currentDate.getDate()} ${
+          months[currentDate.getMonth()]
+        }`;
+        //const date = (new Date()).toString();
         const weatherInfo = {
             city: data.name,
             country: data.sys.country,
@@ -74,7 +94,7 @@ class Home extends Component {
         } else {
             icon = faSmog;
         }
-        this.setState({ weatherInfo, forecastInfo: data2.list, icon, error: false });
+        this.setState({ weatherInfo, forecastInfo: data2.list, icon, error: false, date });
     }
 
     handleChange = (e) => {
@@ -86,16 +106,18 @@ class Home extends Component {
     }
 
     render() {
-        const { weatherInfo, forecastInfo, icon, error, toggle } = this.state;
+        const { weatherInfo, forecastInfo, icon, error, toggle, date } = this.state;
 
         return (
             <div>
-                <h1>Home</h1>
-                <Searchbar handleSubmit={this.getWeather} />
-                {/* <form onSubmit={this.getWeather}>
-                    <input type="search" onChange={this.handleChange} value={this.state.searchValue} placeholder="City..."></input>
-                </form> */}
-                {icon ? <FontAwesomeIcon icon={icon} /> : ""}
+                <Searchbar className="searchbar" handleSubmit={this.getWeather} />
+                {weatherInfo ?
+                    <div className="location">
+                        <div>{weatherInfo.city}, {weatherInfo.country}</div>
+                        <div>{date}</div>
+                    </div>
+                : ""}
+                {icon ? <GeneralWeatherCard weatherInfo={weatherInfo} icon={icon} />  : ""}
                 {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}
                 <button onClick={this.handleToggle}>toggle</button>
                 {(forecastInfo && !toggle) && <Forecast forecastInfo={forecastInfo} />}

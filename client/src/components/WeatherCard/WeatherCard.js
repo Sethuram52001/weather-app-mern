@@ -22,10 +22,6 @@ const WeatherCard = ({ weatherInfo }) => {
   
     return ( 
         <div>
-          <div className="general-weather-card">
-            <div className="text">weather info: {city}</div>
-            <div className="text">temp: {temp}</div>
-          </div>
           <div className="weather-card">
             <div className="box">
               <div className="text">{lowestTemp}&deg;C</div>

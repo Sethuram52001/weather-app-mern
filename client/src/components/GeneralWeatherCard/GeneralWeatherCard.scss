@@ -1,0 +1,35 @@
+$mobile: 480px;
+$tablet: 768px;
+$laptop: 1024px;
+$desktop: 1200px;
+
+.general-weather-card {
+    color: white;
+}
+
+.g-weather-box {
+    width: 40%;
+    display: inline-block;
+}
+
+.text-temp {
+    font-size: 72px;
+}
+
+.text-desc {
+    font-size: 28px;
+}
+
+/*
+    border-radius: 5px;
+    width: 300px;
+    background: coral;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 10px;
+    display: inline-block;
+    box-sizing: border-box;
+    @media only screen and (max-width: $tablet) {
+        display: block;
+    }
+*/
