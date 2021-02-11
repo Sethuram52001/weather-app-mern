@@ -10,6 +10,11 @@ const MyCityDetails = (props) => {
     const [forecastInfo, setforecastInfo] = useState(null);
     const [toggle, handleToggle] = useState(null);
 
+    const handleClick = () => {
+        console.log("click was called")
+        handleToggle(!toggle)
+    }
+
     useEffect(async () => {
         const API_KEY = config.API_KEY;
         const searchValue = props.match.params.id;
@@ -45,11 +50,11 @@ const MyCityDetails = (props) => {
     console.log("my city details of: "+city)
     return ( 
         <div>
-            <h1>Hello there {city}</h1>
+            <h1 className="title">{city}</h1>
             {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}
-            <button onClick={() => handleToggle(!toggle)}>toggle</button>
-            {(forecastInfo && !toggle) && <Forecast forecastInfo={forecastInfo} />}
-            {(forecastInfo && toggle) && <Chart forecastInfo={forecastInfo} />}
+            {/* <button onClick={() => handleToggle(!toggle)}>toggle</button> */}
+            {(forecastInfo && !toggle) && <Forecast handleClick={() => handleClick()} forecastInfo={forecastInfo} />}
+            {(forecastInfo && toggle) && <Chart handleClick={() => handleClick()} forecastInfo={forecastInfo} />}
         </div>
      );
 }

@@ -105,6 +105,10 @@ class Home extends Component {
         this.setState({ toggle: !this.state.toggle });
     }
 
+    handleClick = () => {
+        console.log("button clicked");
+    }
+
     render() {
         const { weatherInfo, forecastInfo, icon, error, toggle, date } = this.state;
 
@@ -116,12 +120,13 @@ class Home extends Component {
                         <div>{weatherInfo.city}, {weatherInfo.country}</div>
                         <div>{date}</div>
                     </div>
-                : ""}
-                {icon ? <GeneralWeatherCard weatherInfo={weatherInfo} icon={icon} />  : ""}
-                {weatherInfo && <WeatherCard weatherInfo={weatherInfo} />}
-                <button onClick={this.handleToggle}>toggle</button>
-                {(forecastInfo && !toggle) && <Forecast forecastInfo={forecastInfo} />}
-                {(forecastInfo && toggle) && <Chart forecastInfo={forecastInfo} />}
+                : ""}   
+                <div className="flex-container">
+                    {icon ? <GeneralWeatherCard className="flex-child" weatherInfo={weatherInfo} icon={icon} /> : ""}
+                    {weatherInfo && <WeatherCard className="flex-child" weatherInfo={weatherInfo} />}
+                </div>
+                {(forecastInfo && !toggle) && <Forecast handleClick={this.handleToggle} forecastInfo={forecastInfo} />}
+                {(forecastInfo && toggle) && <Chart handleClick={this.handleToggle} forecastInfo={forecastInfo} />}
                 {error && <Error />}
             </div>
          );

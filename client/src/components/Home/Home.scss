@@ -7,3 +7,16 @@
     font-size: 36px;
     font-weight: bolder;
 }
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: 1;
+    border: 2px solid yellow;
+}
+
+.flex-child:first-child {
+    margin-right: 100px;
+} 

@@ -3,12 +3,13 @@ import PropTypes from "prop-types";
 import ForecastCard from '../ForecastCard/ForecastCard';
 import "./Forecast.scss";
 
-const Forecast = ({ forecastInfo }) => {
+const Forecast = ({ forecastInfo, handleClick }) => {
 
   return ( 
     <div>
-      <h3>Forecast</h3>
-      <div className="scrolling-wrapper">{/*card-columns d-flex justify-content-center*/}
+      <h3 className="title">Forecast</h3>
+      <button onClick={() => handleClick()}>toggle</button>
+      <div className="scrolling-wrapper">
         {forecastInfo.map(item => (
           <ForecastCard
             className="card"
@@ -17,13 +18,13 @@ const Forecast = ({ forecastInfo }) => {
           />
         ))}
       </div>
-      {/*forecastInfo.toString()*/}
     </div>
    );
 }
  
 Forecast.propTypes = {
-  forecastInfo: PropTypes.array
+  forecastInfo: PropTypes.array,
+  handleClick: PropTypes.func
 }
 
 export default Forecast;
