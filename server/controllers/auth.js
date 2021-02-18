@@ -1,4 +1,4 @@
-const googleOAuth = require('../utils/googleOauth');
+const googleOAuth = require("../utils/googleOauth");
 
 exports.login = async (req, res) => {
     try {
@@ -12,11 +12,11 @@ exports.login = async (req, res) => {
             lastName: profile.family_name,
             email: profile.email,
             profilePic: profile.picture,
-        };
+        }
 
         res.send({ user });
     } catch (e) {
         console.log(e);
         res.status(401).send();
     }
-};
+} 
