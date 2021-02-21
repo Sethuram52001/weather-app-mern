@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const path = require('path');
 const cors = require('cors');
+const logger = require('morgan');
 const mongoose = require('mongoose');
 
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 dotenv.config({ path: './config/config.env' });
 
 app.use(cors());
+app.use(logger('combined'));
 app.use(express.json());
 
 // mongodb
@@ -26,6 +28,10 @@ app.use('/cities', cityRouter);
 const usersRouter = require('./routes/user');
 
 app.use('/users', usersRouter);
+
+const authRouter = require('./routes/auth');
+
+app.use('/auth', authRouter);
 
 const port = process.env.PORT || 5000;
 

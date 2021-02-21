@@ -7,6 +7,7 @@ import MyCities from './components/MyCities/MyCities';
 import MyCityDetails from './components/MyCityDetails/MyCityDetails';
 import AppNavbar from './components/AppNavbar/AppNavbar';
 import AddCity from './components/AddCity/AddCity';
+import Login from './components/Login/Login';
 
 class App extends Component {
   state = {}
@@ -25,6 +26,7 @@ class App extends Component {
           <Route path="/my_cities" component={MyCities} exact></Route> 
           <Route path="/my_city_details/:id" component={MyCityDetails}></Route>
           <Route path="/add_city" component={AddCity}></Route>
+          <Route path="/login" component={Login}></Route>
         </Switch>
       </Router>
       </div>
