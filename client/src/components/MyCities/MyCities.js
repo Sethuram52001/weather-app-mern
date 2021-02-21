@@ -9,7 +9,7 @@ class MyCities extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:5000/cities`)
+        axios.get(`/cities`)
             .then(res => {
                 console.log(res.data)
                 const resObj = res.data;
@@ -35,7 +35,7 @@ class MyCities extends Component {
             city.id !== id
         );
         this.setState({ cities: newCities });
-        axios.delete(`http://localhost:5000/cities/${id}`);
+        axios.delete(`/cities/${id}`);
     }
     
     render() { 
