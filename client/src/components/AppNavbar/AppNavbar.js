@@ -38,8 +38,12 @@ const AppNavbar = (props) => {
                     <Link to="/add_city">Add City</Link>
                 </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink>
+                <Link to="/login">Login</Link>
+              </NavLink>
+            </NavItem>
           </Nav>
-          <NavbarText>Login</NavbarText>
         </Collapse>
       </Navbar>
     </div>
