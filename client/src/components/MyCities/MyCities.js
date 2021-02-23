@@ -2,29 +2,13 @@ import React, { Component } from 'react';
 import axios from "axios";
 import MyCityCard from "../MyCityCard/MyCityCard";
 import "./MyCities.scss";
+import { connect } from "react-redux";
+import { getCities } from '../../redux/actions/weatherActions';
 
 class MyCities extends Component {
-    state = { 
-        cities: []
-    }
-
+    
     componentDidMount() {
-        axios.get(`/cities`)
-            .then(res => {
-                console.log(res.data)
-                const resObj = res.data;
-                const cities = [];
-                resObj.map((value) => {
-                    const city = {
-                        cityname: value.cityname,
-                        id: value._id
-                    };
-                    cities.push(city)
-                });
-                console.log(cities);
-                this.setState({ cities });
-            })
-            .catch(err => console.log(err));
+        this.props.dispatch(getCities())
     }
 
     deleteCard = (id) => {
@@ -39,9 +23,9 @@ class MyCities extends Component {
     }
     
     render() { 
-        const { cities } = this.state;
+        const { cities } = this.props;
         const listItems = cities.map((city) =>
-            <MyCityCard id={city.id} city={city} handleDelete={this.deleteCard} className="my-city-card" />
+            <MyCityCard key={city.id} city={city} handleDelete={this.deleteCard} className="my-city-card" />
         );
 
         return ( 
@@ -52,4 +36,10 @@ class MyCities extends Component {
     }
 }
  
-export default MyCities;
+function mapStateToProps(state) {
+    return {
+        cities: state.cities
+    }
+}
+
+export default connect(mapStateToProps)(MyCities);

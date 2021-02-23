@@ -1,0 +1,5 @@
+export const GET_CITIES_BEGIN = "GET_CITIES_BEGIN";
+export const GET_CITIES_SUCCESS = "GET_CITIES_SUCCESS";
+export const GET_CITIES_FAILURE = "GET_CITIES_FAILURE";
+export const ADD_CITY = "ADD_CITY";
+export const DELETE_CITY = "DELETE_CITY";

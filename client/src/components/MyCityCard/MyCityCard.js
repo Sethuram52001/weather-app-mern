@@ -22,7 +22,6 @@ const MyCityCard = ({ city, handleDelete }) => {
         const weather = `https://api.openweathermap.org/data/2.5/weather?q=${city.cityname}&APPID=${API_KEY}&units=metric`;
         const api_call = await fetch(weather);
         const data = await api_call.json();
-        console.log(data.weather[0].icon);
         setTemp(data.main.temp);
         setMinTemp(data.main.temp_min);
         setMaxTemp(data.main.temp_max);
