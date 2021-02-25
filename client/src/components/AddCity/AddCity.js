@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import SearchBar from "material-ui-search-bar";
 import Searchbar from '../Searchbar/Searchbar';
 
 class AddCity extends Component {

@@ -16,6 +16,8 @@ import {
 import Chart from '../Chart/Chart';
 import Error from "../Error/Error";
 import Searchbar from '../Searchbar/Searchbar';
+import { getWeather } from '../../redux/actions/weatherActions';
+import { connect } from "react-redux";
 
 class Home extends Component {
     state = {
@@ -33,6 +35,7 @@ class Home extends Component {
         //this.setState({ searchValue: e.target.elements.city.value });
         const API_KEY = config.API_KEY;
         const searchValue = e.target.elements.city.value;
+        this.props.dispatch(getWeather(searchValue))
         const weather = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&APPID=${API_KEY}&units=metric`;
         const forecast = `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&APPID=${API_KEY}&units=metric`;
         const api_call = await fetch(weather);
@@ -41,19 +44,19 @@ class Home extends Component {
         const data2 = await api_call2.json();
         const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString().slice(0, 4);
         const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString().slice(0, 4);
-                const months = [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'Nocvember',
-          'December',
+        const months = [
+            'January',
+            'February',
+            'March',
+            'April',
+            'May',
+            'June',
+            'July',
+            'August',
+            'September',
+            'October',
+            'Nocvember',
+            'December',
         ];
         const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         const currentDate = new Date();
@@ -133,7 +136,7 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default connect()(Home);
 
 // info
 // possible weather-condition reported from by openweathermap api : https://openweathermap.org/weather-conditions

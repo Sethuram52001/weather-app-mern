@@ -3,12 +3,16 @@ import axios from "axios";
 import MyCityCard from "../MyCityCard/MyCityCard";
 import "./MyCities.scss";
 import { connect } from "react-redux";
-import { getCities } from '../../redux/actions/weatherActions';
+import { getCities } from '../../redux/actions/cityActions';
+import { getForecast } from "../../redux/actions/forecastActions";
+import { getWeather } from '../../redux/actions/weatherActions';
 
 class MyCities extends Component {
     
     componentDidMount() {
-        this.props.dispatch(getCities())
+        this.props.dispatch(getCities());
+        this.props.dispatch(getForecast());
+        this.props.dispatch(getWeather());
     }
 
     deleteCard = (id) => {
