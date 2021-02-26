@@ -18,6 +18,7 @@ import Error from "../Error/Error";
 import Searchbar from '../Searchbar/Searchbar';
 import { getWeather } from '../../redux/actions/weatherActions';
 import { connect } from "react-redux";
+import { getForecast } from '../../redux/actions/forecastActions';
 
 class Home extends Component {
     state = {
@@ -28,6 +29,11 @@ class Home extends Component {
         error: false,
         toggle: false,
         date: null
+    }
+
+    componentDidMount() {
+        this.props.dispatch(getWeather("Madurai"))
+        this.props.dispatch(getForecast("Madurai"))
     }
 
     getWeather = async (e) => {
@@ -114,6 +120,8 @@ class Home extends Component {
 
     render() {
         const { weatherInfo, forecastInfo, icon, error, toggle, date } = this.state;
+        console.log(this.props.weatherInfo)
+        console.log(this.props.cities)
 
         return (
             <div>
@@ -136,7 +144,15 @@ class Home extends Component {
     }
 }
 
-export default connect()(Home);
+function mapStateToProps(state) {
+    return {
+        forecastInfo: state.forecast.forecastInfo,
+        weatherInfo: state.weather.weatherInfo,
+        cities: state.cities.cities
+    }
+}
+
+export default connect(mapStateToProps)(Home);
 
 // info
 // possible weather-condition reported from by openweathermap api : https://openweathermap.org/weather-conditions

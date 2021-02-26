@@ -1,5 +1,5 @@
 import { createStore, applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-import cityReducer from "./reducers/cityReducers";
+import rootReducer from "./reducers/index";
 
-export const store = createStore(cityReducer, applyMiddleware(thunk));
+export const store = createStore(rootReducer, applyMiddleware(thunk));

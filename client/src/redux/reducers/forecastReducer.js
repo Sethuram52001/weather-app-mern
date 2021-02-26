@@ -16,9 +16,10 @@ export default function forecastReducer(state = initialState, action) {
             }
         
         case GET_FORECAST_SUCCESS:
+            console.log(action.payload.forecastInfo)
             return {
                 ...state,
-                forecastInfo: action.payload.forecast,
+                forecastInfo: action.payload.forecastInfo,
                 loading: false
             }
         

@@ -11,8 +11,8 @@ class MyCities extends Component {
     
     componentDidMount() {
         this.props.dispatch(getCities());
-        this.props.dispatch(getForecast());
-        this.props.dispatch(getWeather());
+        this.props.dispatch(getForecast("Madurai"));
+        this.props.dispatch(getWeather("Madurai"));
     }
 
     deleteCard = (id) => {
@@ -42,7 +42,7 @@ class MyCities extends Component {
  
 function mapStateToProps(state) {
     return {
-        cities: state.cities
+        cities: state.cities.cities
     }
 }
 
