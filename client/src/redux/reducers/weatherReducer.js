@@ -16,6 +16,7 @@ export default function weatherReducer(state = initialState, action) {
             }
         
         case GET_WEATHER_SUCCESS:
+            console.log(action.payload.weatherInfo)
             return {
                 ...state,
                 weatherInfo: action.payload.weatherInfo,

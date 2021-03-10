@@ -29,6 +29,7 @@ export function getForecast(city) {
                 const forecastInfo = data.list;
                 dispatch(getForecastSuccess(forecastInfo))
                 return forecastInfo;
+                console.log(forecastInfo)
             })
             .catch(error => dispatch(getForecastFailure(error)))
     }

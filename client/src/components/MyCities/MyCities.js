@@ -4,15 +4,11 @@ import MyCityCard from "../MyCityCard/MyCityCard";
 import "./MyCities.scss";
 import { connect } from "react-redux";
 import { getCities } from '../../redux/actions/cityActions';
-import { getForecast } from "../../redux/actions/forecastActions";
-import { getWeather } from '../../redux/actions/weatherActions';
 
 class MyCities extends Component {
     
     componentDidMount() {
         this.props.dispatch(getCities());
-        this.props.dispatch(getForecast("Madurai"));
-        this.props.dispatch(getWeather("Madurai"));
     }
 
     deleteCard = (id) => {

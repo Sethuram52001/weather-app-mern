@@ -38,54 +38,15 @@ class Home extends Component {
 
     getWeather = async (e) => {
         e.preventDefault();
-        //this.setState({ searchValue: e.target.elements.city.value });
         const API_KEY = config.API_KEY;
         const searchValue = e.target.elements.city.value;
-        this.props.dispatch(getWeather(searchValue))
+        this.props.dispatch(getWeather(searchValue));
+        this.props.dispatch(getForecast(searchValue));
+        const weatherInfo = this.props.weatherInfo;
+        const forecastInfo = this.props.forecastInfo;
         const weather = `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&APPID=${API_KEY}&units=metric`;
-        const forecast = `https://api.openweathermap.org/data/2.5/forecast?q=${searchValue}&APPID=${API_KEY}&units=metric`;
         const api_call = await fetch(weather);
         const data = await api_call.json();
-        const api_call2 = await fetch(forecast);
-        const data2 = await api_call2.json();
-        const sunset = new Date(data.sys.sunset * 1000).toLocaleTimeString().slice(0, 4);
-        const sunrise = new Date(data.sys.sunrise * 1000).toLocaleTimeString().slice(0, 4);
-        const months = [
-            'January',
-            'February',
-            'March',
-            'April',
-            'May',
-            'June',
-            'July',
-            'August',
-            'September',
-            'October',
-            'Nocvember',
-            'December',
-        ];
-        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const currentDate = new Date();
-        const date = `${days[currentDate.getDay()]} ${currentDate.getDate()} ${
-          months[currentDate.getMonth()]
-        }`;
-        //const date = (new Date()).toString();
-        const weatherInfo = {
-            city: data.name,
-            country: data.sys.country,
-            date,
-            description: data.weather[0].description,
-            main: data.weather[0].main,
-            temp: data.main.temp,
-            highestTemp: data.main.temp_max,
-            lowestTemp: data.main.temp_min,
-            sunrise,
-            sunset,
-            clouds: data.clouds.all,
-            humidity: data.main.humidity,
-            wind: data.wind.speed,
-            forcast: data2.list
-        }
         let main = data.weather[0].main, icon = null;
         // selecting weather icon
         if (main === 'Thunderstorm') {
@@ -103,7 +64,11 @@ class Home extends Component {
         } else {
             icon = faSmog;
         }
-        this.setState({ weatherInfo, forecastInfo: data2.list, icon, error: false, date });
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'Nocvember', 'December'];
+        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        const currentDate = new Date();
+        const date = `${days[currentDate.getDay()]} ${currentDate.getDate()} ${months[currentDate.getMonth()]}`;
+        this.setState({ weatherInfo, forecastInfo, icon, error: false, date });
     }
 
     handleChange = (e) => {
@@ -120,8 +85,6 @@ class Home extends Component {
 
     render() {
         const { weatherInfo, forecastInfo, icon, error, toggle, date } = this.state;
-        console.log(this.props.weatherInfo)
-        console.log(this.props.cities)
 
         return (
             <div>
