@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import MyCityCard from "../MyCityCard/MyCityCard";
 import "./MyCities.scss";
+import AddCityCard from '../AddCityCard/AddCityCard';
 
 class MyCities extends Component {
     state = { 
@@ -47,6 +48,7 @@ class MyCities extends Component {
         return ( 
             <div>
                 {listItems}
+                <AddCityCard />
             </div>
          );
     }
