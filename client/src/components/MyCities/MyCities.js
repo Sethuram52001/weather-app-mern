@@ -4,6 +4,7 @@ import MyCityCard from "../MyCityCard/MyCityCard";
 import "./MyCities.scss";
 import { connect } from "react-redux";
 import { getCities } from '../../redux/actions/cityActions';
+import AddCityCard from '../AddCityCard/AddCityCard';
 
 class MyCities extends Component {
     
@@ -31,6 +32,7 @@ class MyCities extends Component {
         return ( 
             <div>
                 {listItems}
+                <AddCityCard />
             </div>
          );
     }

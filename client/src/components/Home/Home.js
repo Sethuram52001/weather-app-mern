@@ -89,15 +89,19 @@ class Home extends Component {
         return (
             <div>
                 <Searchbar className="searchbar" handleSubmit={this.getWeather} />
-                {weatherInfo ?
-                    <div className="location">
-                        <div>{weatherInfo.city}, {weatherInfo.country}</div>
-                        <div>{date}</div>
+                <div className="HomeCard">
+                    {weatherInfo ?
+                        <div className="location">
+                            <div>{weatherInfo.city}, {weatherInfo.country}</div>
+                            <div>{date}</div>
+                        </div>
+                    : ""}   
+                    <div className="flex-container">
+                        {icon ? <GeneralWeatherCard className="flex-child" weatherInfo={weatherInfo} icon={icon} /> : ""}
+                        {weatherInfo && <WeatherCard className="flex-child" weatherInfo={weatherInfo} />}
                     </div>
-                : ""}   
-                <div className="flex-container">
-                    {icon ? <GeneralWeatherCard className="flex-child" weatherInfo={weatherInfo} icon={icon} /> : ""}
-                    {weatherInfo && <WeatherCard className="flex-child" weatherInfo={weatherInfo} />}
+                </div>
+                <div className="WeekCard">
                 </div>
                 {(forecastInfo && !toggle) && <Forecast handleClick={this.handleToggle} forecastInfo={forecastInfo} />}
                 {(forecastInfo && toggle) && <Chart handleClick={this.handleToggle} forecastInfo={forecastInfo} />}
