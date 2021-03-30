@@ -6,6 +6,7 @@
     color: white;
     font-size: 36px;
     font-weight: bolder;
+    text-align: right;
 }
 
 .flex-container {
@@ -20,3 +21,19 @@
 .flex-child:first-child {
     margin-right: 100px;
 } 
+
+.HomeCard {
+    background-color: black;
+    height: 510px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.WeekCard {
+    background-color: gray;
+    height: 300px;
+    width: 80%;
+    margin: 0 auto;
+    border-radius: 0 0 1rem 1rem;
+}
