@@ -6,10 +6,10 @@ const GeneralWeatherCard = ({ weatherInfo, icon }) => {
     return ( 
         <div>
             <div className="general-weather-card">
-                <FontAwesomeIcon className="g-weather-box" size="8x" icon={icon} />
+                {/* <FontAwesomeIcon className="g-weather-box" size="8x" icon={icon} /> */}
                 <div className="g-weather-box">
-                    <div className="text-temp">{weatherInfo.temp}&deg;</div>
-                    <div className="text-desc">{weatherInfo.description}</div>
+                    <div className="text-temp">{weatherInfo.temp}&deg;</div> 
+                    <div className="text-desc">{weatherInfo.description}</div> 
                 </div>
           </div>
         </div>

@@ -38,14 +38,14 @@ export function getWeather(city) {
                     date,
                     description: data.weather[0].description,
                     main: data.weather[0].main,
-                    temp: data.main.temp,
-                    highestTemp: data.main.temp_max,
-                    lowestTemp: data.main.temp_min,
+                    temp: Math.round(data.main.temp),
+                    highestTemp: Math.round(data.main.temp_max),
+                    lowestTemp: Math.round(data.main.temp_min),
                     sunrise,
                     sunset,
                     clouds: data.clouds.all,
                     humidity: data.main.humidity,
-                    wind: data.wind.speed
+                    wind: Math.round(data.wind.speed)
                 }
                 dispatch(getWeatherSuccess(weatherInfo))
                 return weatherInfo;

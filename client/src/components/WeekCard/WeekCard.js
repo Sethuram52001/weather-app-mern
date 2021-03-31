@@ -1,8 +1,9 @@
 import React from 'react';
 import "./WeekCard.scss";
 
-const WeekCard = () => {
-    return ( 
+const WeekCard = async({forecastInfo}) => {
+    
+    return (
         <div></div>
      );
 }

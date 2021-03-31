@@ -19,6 +19,7 @@ import Searchbar from '../Searchbar/Searchbar';
 import { getWeather } from '../../redux/actions/weatherActions';
 import { connect } from "react-redux";
 import { getForecast } from '../../redux/actions/forecastActions';
+import WeekCard from '../WeekCard/WeekCard';
 
 class Home extends Component {
     state = {
@@ -32,8 +33,8 @@ class Home extends Component {
     }
 
     componentDidMount() {
-        this.props.dispatch(getWeather("Madurai"))
-        this.props.dispatch(getForecast("Madurai"))
+        // this.props.dispatch(getWeather("Madurai"))
+        // this.props.dispatch(getForecast("Madurai"))
     }
 
     getWeather = async (e) => {
@@ -101,8 +102,9 @@ class Home extends Component {
                         {weatherInfo && <WeatherCard className="flex-child" weatherInfo={weatherInfo} />}
                     </div>
                 </div>
-                <div className="WeekCard">
-                </div>
+                {/* <div className="WeekCard">
+                        {forecastInfo ? <WeekCard /> : ""}
+                </div> */}
                 {(forecastInfo && !toggle) && <Forecast handleClick={this.handleToggle} forecastInfo={forecastInfo} />}
                 {(forecastInfo && toggle) && <Chart handleClick={this.handleToggle} forecastInfo={forecastInfo} />}
                 {error && <Error />}

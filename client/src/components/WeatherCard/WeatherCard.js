@@ -30,7 +30,7 @@ const WeatherCard = ({ weatherInfo }) => {
               <div className="text">high</div>
             </div>
             <div className="box">
-              <div className="text">{wind}</div>
+              <div className="text">{wind} M/S</div>
               <div className="text">wind</div>
               <div className="text">{humidity}%</div>
               <div className="text">humidity</div>
